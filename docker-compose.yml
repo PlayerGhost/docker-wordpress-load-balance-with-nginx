@@ -1,0 +1,75 @@
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: wordpress_db
+    environment:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+    ports:
+      - "3306:3306"
+
+  wordpress-1:
+    image: wordpress:5.4.2-php7.2-apache
+    container_name: wordpress-1
+    # env_file:
+    #   - ./wordpress/.wordpress.env
+    volumes:
+      # - ../out:/usr/share/nginx/html
+      # - ./out:/var/www/html
+      - /var/www/html
+    networks:
+      - wordpress_nginx
+    depends_on:
+      - "mysql"
+
+  wordpress-2:
+    image: wordpress:5.4.2-php7.2-apache
+    container_name: wordpress-2
+    # env_file:
+    #   - ./wordpress/.wordpress.env
+    volumes:
+      # - ../out:/usr/share/nginx/html
+      # - ./out:/var/www/html
+      - /var/www/html
+    networks:
+      - wordpress_nginx
+    depends_on:
+      - "mysql"
+
+  wordpress-3:
+    image: wordpress:5.4.2-php7.2-apache
+    container_name: wordpress-3
+    # env_file:
+    #   - ./wordpress/.wordpress.env
+    volumes:
+      # - ../out:/usr/share/nginx/html
+      # - ./out:/var/www/html
+      - /var/www/html
+    networks:
+      - wordpress_nginx
+    depends_on:
+      - "mysql"
+  
+  nginx:
+    container_name: nginx
+    image: nginx:1.19.0
+    # build: 
+    #   context: .
+    #   dockerfile: nginx.dockerfile
+    networks:
+      - "wordpress_nginx" 
+    depends_on:
+      - "wordpress-1"
+      - "wordpress-2"
+      - "wordpress-3"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./out:/usr/share/nginx/html
+    ports:
+      - "5000:5000"
+
+networks:
+  wordpress_nginx:
+    driver: bridge 
