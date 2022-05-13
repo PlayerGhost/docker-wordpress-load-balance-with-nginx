@@ -76,20 +76,6 @@ services:
     ports:
       - "80:80"
 
-  locust:
-    container_name: locust
-    image: grubykarol/locust
-    environment:
-      - ATTACKED_HOST=http://localhost/
-      - LOCUST_OPTS="-c 10 -r 10"
-    volumes:
-      - ./locustfile.py:/mnt/locust/
-    command: -f /mnt/locust/locustfile.py -H http://localhost:80/
-    depends_on:
-      - "nginx"
-    ports:
-      - "8089:8089"
-
 networks:
   wordpress_nginx:
     driver: bridge
