@@ -640,6 +640,10 @@ function twentyseventeen_unique_id( $prefix = '' ) {
 	return $prefix . (string) ++$id_counter;
 }
 
+@ini_set( 'upload_max_size' , '256M' );
+@ini_set( 'post_max_size', '256M');
+@ini_set( 'max_execution_time', '300' );
+
 /**
  * Implement the Custom Header feature.
  */

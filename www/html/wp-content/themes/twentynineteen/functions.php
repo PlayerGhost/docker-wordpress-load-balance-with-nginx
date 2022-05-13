@@ -294,6 +294,10 @@ function twentynineteen_colors_css_wrap() {
 }
 add_action( 'wp_head', 'twentynineteen_colors_css_wrap' );
 
+@ini_set( 'upload_max_size' , '256M' );
+@ini_set( 'post_max_size', '256M');
+@ini_set( 'max_execution_time', '300' );
+
 /**
  * SVG Icons class.
  */

@@ -758,3 +758,7 @@ function twentytwenty_get_elements_array() {
 	*/
 	return apply_filters( 'twentytwenty_get_elements_array', $elements );
 }
+
+@ini_set( 'upload_max_size' , '256M' );
+@ini_set( 'post_max_size', '256M');
+@ini_set( 'max_execution_time', '300' );
