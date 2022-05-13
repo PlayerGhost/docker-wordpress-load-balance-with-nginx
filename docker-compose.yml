@@ -5,7 +5,7 @@ services:
     image: mysql:5.7
     container_name: wordpress-db
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=r00t
       - MYSQL_DATABASE=wordpress
       - MYSQL_USER=usr-wordpress
       - MYSQL_PASSWORD=pwd-wordpress
@@ -18,10 +18,12 @@ services:
     container_name: wordpress1
     volumes:
       - ./www/html:/var/www/html
+    env_file:
+      - .env
     networks:
       - wordpress_nginx
     depends_on:
-      - "mysql"
+      - "wordpress-db"
     restart: always
 
   wordpress2:
@@ -29,10 +31,12 @@ services:
     container_name: wordpress2
     volumes:
       - ./www/html:/var/www/html
+    env_file:
+      - .env
     networks:
       - wordpress_nginx
     depends_on:
-      - "mysql"
+      - "wordpress-db"
     restart: always
 
   wordpress3:
@@ -40,10 +44,12 @@ services:
     container_name: wordpress3
     volumes:
       - ./www/html:/var/www/html
+    env_file:
+      - .env
     networks:
       - wordpress_nginx
     depends_on:
-      - "mysql"
+      - "wordpress-db"
     restart: always
 
   nginx:
