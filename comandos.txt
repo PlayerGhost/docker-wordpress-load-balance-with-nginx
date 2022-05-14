@@ -1,0 +1,9 @@
+python -m locust -f locustfile-1.py --headless --run-time 5m --stop-timeout 0 -H http://localhost:80 --csv out1 --users 1 --spawn-rate 1
+python -m locust -f locustfile-1.py --headless --run-time 5m --stop-timeout 0 -H http://localhost:80 --csv out2 --users 10 --spawn-rate 10
+python -m locust -f locustfile-1.py --headless --run-time 5m --stop-timeout 0 -H http://localhost:80 --csv out3 --users 100 --spawn-rate 100
+python -m locust -f locustfile-2.py --headless --run-time 5m --stop-timeout 0 -H http://localhost:80 --csv out4 --users 1 --spawn-rate 1
+python -m locust -f locustfile-2.py --headless --run-time 5m --stop-timeout 0 -H http://localhost:80 --csv out5 --users 10 --spawn-rate 10
+python -m locust -f locustfile-2.py --headless --run-time 5m --stop-timeout 0 -H http://localhost:80 --csv out6 --users 100 --spawn-rate 100
+python -m locust -f locustfile-3.py --headless --run-time 5m --stop-timeout 0 -H http://localhost:80 --csv out7 --users 1 --spawn-rate 1
+python -m locust -f locustfile-3.py --headless --run-time 5m --stop-timeout 0 -H http://localhost:80 --csv out8 --users 10 --spawn-rate 10
+python -m locust -f locustfile-3.py --headless --run-time 5m --stop-timeout 0 -H http://localhost:80 --csv out9 --users 100 --spawn-rate 100
